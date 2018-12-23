@@ -3,6 +3,26 @@
 
 import docclass
 
+
+
+# from os import listdir
+# from os.path import isfile, join
+#
+# mypath = '/Users/mihailageev/BayesClassifier/train_text'
+#
+# onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+#
+# for file in onlyfiles:
+#     text = open(mypath + '/' + file,encoding="utf8", errors='ignore')
+#     print(text.read())
+#     file = file.split('_')
+#     print(file[0])
+#
+# print(onlyfiles)
+
+
+
+
 rightAnswerFootball = 'футбол'
 rightAnswerPolitic = 'политика'
 rightAnswerRecept = 'рецепт'
@@ -10,7 +30,7 @@ unknownAnswer = 'unknown'
 
 cl=docclass.bayes(docclass.getwords)
 docclass.sampletrain(cl)
-for i in range(10): docclass.sampletrain(cl)
+# for i in range(10): docclass.sampletrain(cl)
 
 print ("\n")
 
