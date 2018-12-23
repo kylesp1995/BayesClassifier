@@ -4,8 +4,13 @@
 
 import math
 import re
+import json
 from os import listdir
 from os.path import isfile, join
+
+# Можно ли как-то избежать такого пути?
+mypath = '/Users/mihailageev/BayesClassifier/train_text'
+modelpah = '/Users/mihailageev/BayesClassifier/model'
 
 # Тест
 def getwords(doc):
@@ -19,8 +24,6 @@ def getwords(doc):
     return dict([(w, 1) for w in words])
 
 def sampletrain(cl):
-    mypath = '/Users/mihailageev/BayesClassifier/train_text'
-    # Можно ли как-то избежать такого пути?
 
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
@@ -32,6 +35,15 @@ def sampletrain(cl):
         title = (file[0])
         cl.train(text, title)
 
+    print(cl.fc)
+    print(cl.cc)
+    print(cl.thresholds)
+
+    with open(modelpah + '/' +'cc', 'w') as file:
+        file.write(json.dumps(cl.cc))
+
+    with open(modelpah + '/' +'fc', 'w') as file:
+        file.write(json.dumps(cl.fc))
 
 
 class classifier:
@@ -54,7 +66,13 @@ class classifier:
         if cat not in self.thresholds: return 1.0
         return self.thresholds[cat]
 
-    def classify(self, item, default = None, rightAnswer = None):
+    def classify(self, withTrain, item, default = None, rightAnswer = None):
+        if withTrain == False:
+            with open(modelpah + '/' + 'cc') as f:
+                self.cc = json.load(f)
+            with open(modelpah + '/' + 'fc') as f:
+                self.fc = json.load(f)
+
         probs = {}
         # Найти категорию с максимальной вероятностью
         max = 0.0
