@@ -8,7 +8,7 @@ import json
 from os import listdir
 from os.path import isfile, join
 from collections import Counter
-from supportFunction import mergeDict, writeDictFromFile, writeDictToFile
+from supportFunction import mergeDict, writeDictFromFile, writeDictToFile, mergeNestedDict
 
 
 # Можно ли как-то избежать такого пути?
@@ -42,10 +42,10 @@ def sampletrain(cl):
     fcDict = writeDictFromFile(modelpah + '/' +'fc')
 
     ccFinal = mergeDict(ccDict, cl.cc)
-    fcFinal = mergeDict(fcDict, cl.fc)
+    fcFinal = mergeNestedDict(fcDict, cl.fc)
 
-    writeDictFromFile(modelpah + '/' +'cc', ccFinal)
-    writeDictFromFile(modelpah + '/' +'fc', fcFinal)
+    writeDictToFile(ccFinal, modelpah + '/' +'cc')
+    writeDictToFile(fcFinal, modelpah + '/' +'fc')
 
     # with open(modelpah + '/' +'cc', 'w') as file:
     #     file.write(json.dumps(cl.cc))
