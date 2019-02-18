@@ -47,13 +47,6 @@ def sampletrain(cl):
     writeDictToFile(ccFinal, modelpah + '/' +'cc')
     writeDictToFile(fcFinal, modelpah + '/' +'fc')
 
-    # with open(modelpah + '/' +'cc', 'w') as file:
-    #     file.write(json.dumps(cl.cc))
-    #
-    # with open(modelpah + '/' +'fc', 'w') as file:
-    #     file.write(json.dumps(cl.fc))
-
-
 
 class classifier:
     def __init__(self, getfeatures, filename=None):
