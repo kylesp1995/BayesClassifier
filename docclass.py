@@ -7,9 +7,12 @@ import re
 import json
 from os import listdir
 from os.path import isfile, join
+from collections import Counter
+from supportFunction import mergeDict, writeDictFromFile, writeDictToFile, mergeNestedDict
+
 
 # Можно ли как-то избежать такого пути?
-mypath = '/Users/mihailageev/BayesClassifier/train_text'
+mypath = '/Users/mihailageev/BayesClassifier/train_text/1'
 modelpah = '/Users/mihailageev/BayesClassifier/model'
 
 # Тест
@@ -35,15 +38,14 @@ def sampletrain(cl):
         title = (file[0])
         cl.train(text, title)
 
-    print(cl.fc)
-    print(cl.cc)
-    print(cl.thresholds)
+    ccDict = writeDictFromFile(modelpah + '/' +'cc')
+    fcDict = writeDictFromFile(modelpah + '/' +'fc')
 
-    with open(modelpah + '/' +'cc', 'w') as file:
-        file.write(json.dumps(cl.cc))
+    ccFinal = mergeDict(ccDict, cl.cc)
+    fcFinal = mergeNestedDict(fcDict, cl.fc)
 
-    with open(modelpah + '/' +'fc', 'w') as file:
-        file.write(json.dumps(cl.fc))
+    writeDictToFile(ccFinal, modelpah + '/' +'cc')
+    writeDictToFile(fcFinal, modelpah + '/' +'fc')
 
 
 class classifier:
