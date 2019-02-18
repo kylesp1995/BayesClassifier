@@ -7,13 +7,14 @@ import re
 import json
 from os import listdir
 from os.path import isfile, join
-from collections import Counter
+import pymorphy2
 from supportFunction import mergeDict, writeDictFromFile, writeDictToFile, mergeNestedDict
 
 
 # Можно ли как-то избежать такого пути?
 mypath = '/Users/mihailageev/BayesClassifier/train_text/1'
 modelpah = '/Users/mihailageev/BayesClassifier/model'
+morph = pymorphy2.MorphAnalyzer()
 
 # Тест
 def getwords(doc):
@@ -24,7 +25,7 @@ def getwords(doc):
     words = [s.lower() for (s) in decodableText
              if len(s) > 2 and len(s) < 20]
     # Вернуть набор уникальных слов
-    return dict([(w, 1) for w in words])
+    return dict([(morph.parse(w)[0].normal_form, 1) for w in words])
 
 def sampletrain(cl):
 
