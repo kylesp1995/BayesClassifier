@@ -2,9 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import docclass
-import json
-from collections import Counter
-import collections
 
 withTrain = False
 
@@ -13,13 +10,14 @@ rightAnswerPolitic = 'политика'
 rightAnswerRecept = 'рецепт'
 unknownAnswer = 'unknown'
 
+
 cl=docclass.bayes(docclass.getwords)
 if withTrain:
     docclass.sampletrain(cl)
 #
-#
-# print ("\n")
-#
+# #
+# # print ("\n")
+# #
 print (cl.classify(withTrain,'комментарий по матчу? еще раз: это лотерея. вы видели, как залетел мяч, сколько было брака, какие действия были у игроков на поле. в такую погоду и мяч, и действия некоторых игроков были деревянными.', default=unknownAnswer, rightAnswer=rightAnswerFootball))
 print (cl.classify(withTrain,'Нападающий «Сельты» Яго Аспас оформил дубль в матче с «Уэской» (2:0, второй тайм). На счету испанца 10 голов в этом сезоне. Он обогнал игроков «Барселоны» Лионеля Месси и Луиса Суареса, которые забили по 9 голов. Лидирует вместе с Аспасом в гонке бомбардиров Кристиан Стуани из «Жироны» – у него тоже 10 голов.', default=unknownAnswer, rightAnswer=rightAnswerFootball))
 print (cl.classify(withTrain,'УЕФА запустил голосование за лучшего игрока недели в Лиге чемпионов. На награду претендуют Лионель Месси («Барселона»), забивший гол и сделавший ассист в игре против ПСВ (2:1), Арьен Роббен («Бавария»), сделавший дубль в ворота «Бенфики» (5:1), Дрис Мертенс («Наполи»), забивший 2 мяча в ворота «Црвены Звезды» (3:1), а также Максвелл Корне («Лион»), который сделал дубль в матче с «Манчестер Сити» (2:2).', default=unknownAnswer, rightAnswer=rightAnswerFootball))
