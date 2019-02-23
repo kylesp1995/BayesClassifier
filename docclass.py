@@ -8,7 +8,7 @@ import json
 from os import listdir
 from os.path import isfile, join
 import pymorphy2
-from supportFunction import mergeDict, writeDictFromFile, writeDictToFile, mergeNestedDict
+from supportFunction import mergeDict, readDictFromFile, writeDictToFile, mergeNestedDict, isStopWord
 
 
 # Можно ли как-то избежать такого пути?
@@ -19,12 +19,26 @@ morph = pymorphy2.MorphAnalyzer()
 # Тест
 def getwords(doc):
     splitter = re.compile(r'\W')
-    # splitter = re.compile(r'\W*')
-    # Разбить на слова по небуквенным символам
+
     decodableText = splitter.split(doc)
-    words = [s.lower() for (s) in decodableText
-             if len(s) > 2 and len(s) < 20]
-    # Вернуть набор уникальных слов
+
+
+    words = []
+    for (s) in decodableText:
+        print("wait...")
+        word = morph.parse(s.lower())[0]
+        normalWord = word.normal_form
+        if len(s) > 2 and len(s) < 20 and not (isStopWord(normalWord)):
+                partOfSpeech = word.tag.POS
+                if partOfSpeech != "NPRO" and partOfSpeech != "CONJ" and partOfSpeech != "PREP" and partOfSpeech != "PRCL" and partOfSpeech != "INTJ" and partOfSpeech != "PRCL":
+                    words.append(normalWord)
+                    print("WORD WAS APPENDED: "+ normalWord)
+                else:
+                    print("DOES NOT MATCH THE PART OF SPEECH: "+ normalWord)
+
+        else:
+            print("STOP WORD WAS DETECTED: " + s)
+
     return dict([(morph.parse(w)[0].normal_form, 1) for w in words])
 
 def sampletrain(cl):
@@ -39,8 +53,8 @@ def sampletrain(cl):
         title = (file[0])
         cl.train(text, title)
 
-    ccDict = writeDictFromFile(modelpah + '/' +'cc')
-    fcDict = writeDictFromFile(modelpah + '/' +'fc')
+    ccDict = readDictFromFile(modelpah + '/' + 'cc')
+    fcDict = readDictFromFile(modelpah + '/' + 'fc')
 
     ccFinal = mergeDict(ccDict, cl.cc)
     fcFinal = mergeNestedDict(fcDict, cl.fc)
