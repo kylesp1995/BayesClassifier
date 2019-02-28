@@ -25,19 +25,19 @@ def getwords(doc):
 
     words = []
     for (s) in decodableText:
-        print("wait...")
+        # print("wait...")
         word = morph.parse(s.lower())[0]
         normalWord = word.normal_form
         if len(s) > 2 and len(s) < 20 and not (isStopWord(normalWord)):
                 partOfSpeech = word.tag.POS
                 if partOfSpeech != "NPRO" and partOfSpeech != "CONJ" and partOfSpeech != "PREP" and partOfSpeech != "PRCL" and partOfSpeech != "INTJ" and partOfSpeech != "PRCL":
                     words.append(normalWord)
-                    print("WORD WAS APPENDED: "+ normalWord)
-                else:
-                    print("DOES NOT MATCH THE PART OF SPEECH: "+ normalWord)
+                    # print("WORD WAS APPENDED: "+ normalWord)
+                # else:
+                    # print("DOES NOT MATCH THE PART OF SPEECH: "+ normalWord)
 
-        else:
-            print("STOP WORD WAS DETECTED: " + s)
+        # else:
+        #     print("STOP WORD WAS DETECTED: " + s)
 
     return dict([(morph.parse(w)[0].normal_form, 1) for w in words])
 
