@@ -1,6 +1,7 @@
 import json
 from collections import Counter
 import ast
+from math import exp
 
 def mergeDict(dict1, dict2):
     inp = [dict(x) for x in (dict1, dict2)]
@@ -30,6 +31,17 @@ def readDictFromFile(filePath):
 def writeDictToFile(dict, path):
     with open(path, 'w') as file:
         file.write(json.dumps(dict))
+
+
+def cleanFile(path):
+    f = open(path, 'r+')
+    f.truncate(0)
+
+def listsum(numList):
+    theSum = 0
+    for i in numList:
+        theSum += (i)
+    return theSum
 
 
 
