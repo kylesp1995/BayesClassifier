@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f8cb3cb-2812-4b42-a627-7ad7ee1483d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/detectRules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docclass.py" beforeDir="false" afterPath="$PROJECT_DIR$/docclass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/cc" beforeDir="false" afterPath="$PROJECT_DIR$/model/cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/fc" beforeDir="false" afterPath="$PROJECT_DIR$/model/fc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res" beforeDir="false" afterPath="$PROJECT_DIR$/res" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/supportFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/supportFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_text/музыка/музыка_2" beforeDir="false" afterPath="$PROJECT_DIR$/train_text/музыка/музыка_2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,73 +22,65 @@
     <SUITE FILE_PATH="coverage/BayesClassifier$run.coverage" NAME="run Coverage Results" MODIFIED="1545849348231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5424528">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/docclass.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="141" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#48#73#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/supportFunction.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="355">
-                  <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/data.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="45" selection-end-column="45" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/run.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="26" selection-start-line="26" selection-end-line="26" />
-                  <folding>
-                    <element signature="e#47#62#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/run.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="540">
-                  <caret line="61" selection-start-line="61" selection-end-line="61" />
-                  <folding>
-                    <element signature="e#47#62#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docclass.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1185">
+              <caret line="169" column="75" selection-end-line="301" selection-end-column="32" />
+              <folding>
+                <element signature="e#48#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supportFunction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="33" selection-end-line="69" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="45" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
+              <folding>
+                <element signature="e#47#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/detectRules.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2010">
+              <caret line="134" column="17" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -97,7 +92,6 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>getwords</find>
-      <find>prob</find>
       <find>STOP WORD WAS DETECTED</find>
       <find>STOP</find>
       <find>docclass</find>
@@ -105,8 +99,27 @@
       <find>detect</find>
       <find>sampletrain</find>
       <find>музыка_26</find>
-      <find>Ошибка</find>
       <find>ошибка</find>
+      <find>pow</find>
+      <find>классификатор прошел проверку</find>
+      <find>Правильный ответ</find>
+      <find>np</find>
+      <find>log</find>
+      <find>Ошибка</find>
+      <find>listsum</find>
+      <find>train</find>
+      <find>prob</find>
+      <find>Классификатор не смог определить тему!</find>
+      <find>c вероятностью 1.0</find>
+      <find>def prob</find>
+      <find>incf</find>
+      <find>totalcount</find>
+      <find>c вероятностью 0.</find>
+      <find>print</find>
+      <find>не смог определить тему!</find>
+      <find>Ошибка при классификации!!!</find>
+      <find>С вероятность: 0.</find>
+      <find>Классификатор не смог определить тему</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,23 +130,24 @@
       <list>
         <option value="$PROJECT_DIR$/venv/support_function.py" />
         <option value="$PROJECT_DIR$/data.json" />
+        <option value="$PROJECT_DIR$/detectRules.py" />
         <option value="$PROJECT_DIR$/supportFunction.py" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/docclass.py" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="929" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1552" />
-    <option name="height" value="977" />
+    <option name="width" value="1594" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,7 +159,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Course" />
     </panes>
   </component>
@@ -169,7 +182,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.run">
+    <configuration name="detectRules" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="BayesClassifier" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detectRules.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BayesClassifier" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -195,6 +229,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.detectRules" />
       </list>
     </recent_temporary>
   </component>
@@ -219,16 +254,16 @@
     <option name="totallyTimeSpent" value="9496000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="821" y="0" width="1739" height="1080" extended-state="6" />
+    <frame x="0" y="23" width="1594" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.017462166" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16528925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32871288" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26732674" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33069307" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20962566" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37605932" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -236,7 +271,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32871288" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32959184" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -253,9 +288,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/supportFunction.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/docclass.py</url>
-          <line>134</line>
-          <option name="timeStamp" value="1" />
+          <line>280</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/docclass.py</url>
+          <line>245</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/run.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -264,13 +314,6 @@
     <entry file="file://$PROJECT_DIR$/../Library/Caches/PyCharm2018.3/python_stubs/179393801/builtins.py" />
     <entry file="file://$PROJECT_DIR$/venv/support_function.py" />
     <entry file="file://$PROJECT_DIR$/support_function.py" />
-    <entry file="file:///usr/local/Cellar/python/3.7.1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="324" selection-start-line="324" selection-end-line="324" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python/3.7.1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/collections/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -292,6 +335,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.7/site-packages/matplotlib/category.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.7/site-packages/scipy/stats/_continuous_distns.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37965">
+          <caret line="2553" column="8" selection-start-line="2553" selection-start-column="8" selection-end-line="2553" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.7/site-packages/numpy/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="20" column="67" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.7/site-packages/numpy/core/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../venv/lib/python3.7/site-packages/scipy/stats/stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="2161" column="4" selection-start-line="2161" selection-start-column="4" selection-end-line="2161" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Library/Caches/PyCharmCE2018.3/python_stubs/-1531809105/builtins.py" />
+    <entry file="file:///usr/local/Cellar/python/3.7.1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="323" selection-start-line="323" selection-end-line="323" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/detectRules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2010">
+          <caret line="134" column="17" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1185">
+          <caret line="169" column="75" selection-end-line="301" selection-end-column="32" />
+          <folding>
+            <element signature="e#48#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supportFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="33" selection-end-line="69" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -299,32 +422,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supportFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="480">
+          <caret line="32" column="67" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
           <folding>
             <element signature="e#47#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docclass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="141" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
-          <folding>
-            <element signature="e#48#73#0" expanded="true" />
           </folding>
         </state>
       </provider>

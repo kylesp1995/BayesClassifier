@@ -3,18 +3,24 @@
 
 
 from math import exp, log
+import matplotlib.pyplot as plt
 import re
 import json
 from os import listdir
 from os.path import isfile, join
 import pymorphy2
+import operator
+import collections
 from supportFunction import mergeDict, readDictFromFile, writeDictToFile, mergeNestedDict, isStopWord, listsum
 
-
+arrayTmp = []
 # Можно ли как-то избежать такого пути?
 mypath = '/Users/mihailageev/BayesClassifier/train_text/all_texts'
 modelpah = '/Users/mihailageev/BayesClassifier/model'
 morph = pymorphy2.MorphAnalyzer()
+
+badRes = []
+godRes = []
 
 # Тест
 def getwords(doc):
@@ -32,8 +38,16 @@ def getwords(doc):
                 partOfSpeech = word.tag.POS
                 if partOfSpeech != "NPRO" and partOfSpeech != "CONJ" and partOfSpeech != "PREP" and partOfSpeech != "PRCL" and partOfSpeech != "INTJ" and partOfSpeech != "PRCL" and partOfSpeech != None:
                     words.append(normalWord)
+    d = {}
+    # d = dict([(morph.parse(w)[0].normal_form, 1) for w in words])
+    # return dict([(morph.parse(w)[0].normal_form, 1) for w in words])
+    for w in words:
+        if d.get(w) != None:
+            d[w] += 1
+        else:
+            d[w] = 1
 
-    return dict([(morph.parse(w)[0].normal_form, 1) for w in words])
+    return d
 
 def sampletrain(cl):
 
@@ -57,13 +71,13 @@ def sampletrain(cl):
     writeDictToFile(fcFinal, modelpah + '/' +'fc')
 
 
-def crossValidationTrain(cl, textsForTrain):
+def crossValidationTrain(cl, textsForTrain, path):
 
     print("train begin")
     i = len(textsForTrain)
     for file in textsForTrain:
 
-        f = open(mypath + '/' + file, encoding="utf8", errors='ignore')
+        f = open(path + '/' + file, encoding="utf8", errors='ignore')
         text = f.read()
 
         file = file.split('_')
@@ -89,6 +103,7 @@ class classifier:
         self.cc = {}
         self.getfeatures = getfeatures
         self.thresholds = {}
+        self.totalcountFc = {}
 
     # def __init__(self, getfeatures):
     #     classifier.__init__(self, getfeatures)
@@ -109,6 +124,8 @@ class classifier:
                 self.fc = json.load(f)
         # else:
             # sampletrain(self)
+        if self.totalcountFc == {}:
+            self.totalcountFc = self.getTotalCountFc()
 
         probs = {}
         # Найти категорию с максимальной вероятностью
@@ -117,18 +134,17 @@ class classifier:
         setMax = False
         for cat in self.categories():
             probs[cat] = self.prob(item, cat)
-
             ver.append(probs[cat])
-
             if setMax == False:
                 setMax = True
                 max = probs[cat]
             if probs[cat] >= max:
                 max = probs[cat]
                 best = cat
-
-        res = 1 / ( 1 + exp(listsum(ver) - max))
-        newVer = 1 - (max / listsum(ver))
+        # print(ver)
+        # print(max)
+        res = 1 / ( 1 + listsum(ver, max))
+        # newVer = 1 - (max / listsum(ver))
 
         # Убедиться, что найденная вероятность больше чем threshold*следующая по
         # величине
@@ -136,16 +152,30 @@ class classifier:
             if cat == best: continue
             if probs[cat] * self.getthreshold(best) > probs[best]: return default
 
-        if rightAnswer != best:
-            return "Ошибка при классификации!!! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " c вероятностью " + str(newVer)
+        # self.plotWasBuilt = False
+        # plt.show()
+        # return max
+        if res == 1:
+            if rightAnswer != best:
+                badRes.append(max)
+                return "Ошибка при классификации!!! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " c вероятностью " + str(res)
 
-        return "Классификатор сработал верно! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + "c вероятностью " + str(newVer)
+            godRes.append(max)
+            return "Классификатор сработал верно! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " c вероятностью " + str(res)
+        else:
+            if rightAnswer == best:
+                return "Классификатор не смог определить тему, но был близок! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " С вероятность: " + str(
+                    res)
+            else:
+                return "Классификатор не смог определить тему, но был далек! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " С вероятность: " + str(
+                    res)
+            # return "Классификатор не смог определить тему! Правильный ответ: " + rightAnswer + " Классификатор определил: " + best + " С вероятность: " + str(res)
 
     # Увеличить счетчик пар признак/категория
-    def incf(self, f, cat):
+    def incf(self, f, cat, values = 1):
         self.fc.setdefault(f, {})
         self.fc[f].setdefault(cat, 0)
-        self.fc[f][cat] += 1
+        self.fc[f][cat] += values
 
     # Увеличить счетчик применений категории
     def incc(self, cat):
@@ -170,6 +200,19 @@ class classifier:
         h =(sum(self.cc.values( )))
         return sum(self.cc.values())
 
+    def getTotalCountFc(self):
+        dict = {}
+        for k, v in self.fc.items():
+            for key, value in v.items():
+                if dict.get(key) != None:
+                    dict[key] += value
+                else:
+                    dict[key] = value
+
+        # summ = sum(x for counter in self.fc.values() for x in counter.values())
+        # summ = sum(x for counter in self.fc.values() for x in counter.values())
+        return dict
+
     # Список всех категорий
     def categories(self):
          return self.cc.keys( )
@@ -178,8 +221,8 @@ class classifier:
     def train(self, item, cat):
         features = (self.getfeatures(item))
         # Увеличить счетчики для каждого признака в данной классификации
-        for f in features:
-            self.incf(f, cat)
+        for f, value in features.items():
+            self.incf(f, cat, value)
         # Увеличить счетчик применений этой классификации
         self.incc(cat)
 
@@ -198,20 +241,38 @@ class classifier:
                 if cat == key:
                     sumWordInClass = value
 
-        bp = ((weight) + (sumWordInClass)) / (totals + len(self.fc))
+        bp = ((weight) + (sumWordInClass)) / (self.totalcountFc[cat] + len(self.fc))
 
-        return bp
+        descriptionWord = DescriptionWord(sumWordInClass, bp)
+        return descriptionWord
 
 class bayes(classifier):
+
+    plotWasBuilt = False
+
     def docprob(self, item, cat):
         features = self.getfeatures(item)
         # Перемножить вероятности всех признаков
         p = 1
         ver = 1
+        verArray = DisplayDescriptionWord()
         for f in features:
-            ver += log(self.weightedprob(f, cat, self.fprob))
+            descriptionWord = self.weightedprob(f, cat, self.fprob)
+            p = log(descriptionWord.p)
+            arrayTmp.append(p)
+            pWord = descriptionWord.sumWordInClass / len(features)
+            verArray.appendValues(descriptionWord.sumWordInClass, log(descriptionWord.p), f, pWord)
+            ver += p
             # p *= self.weightedprob(f, cat, self.fprob)
-        # print(ver)
+        # if not self.plotWasBuilt:
+        #     plt.figure(cat)
+        #
+        #     plt.plot(verArray.p, verArray.pWord, 'ro')
+        #     plt.grid(True, linestyle='-.')
+        #     plt.tick_params(labelcolor='r', labelsize='medium', width=3)
+        #     plt.ylabel('вероятность')
+        #     plt.xlabel('значение')
+            # plt.show()
         return ver
 
     def prob(self, item, cat):
@@ -220,3 +281,22 @@ class bayes(classifier):
         return docprob + catprob
 
 
+class DescriptionWord(object):
+
+    def __init__(self, sum, p):
+        self.sumWordInClass = sum
+        self.p = p
+
+class DisplayDescriptionWord(object):
+
+    def __init__(self):
+        self.sumWordInClass = []
+        self.p = []
+        self.word = []
+        self.pWord = []
+
+    def appendValues(self, sum, p, word, pWord):
+        self.sumWordInClass.append(sum)
+        self.p.append(p)
+        self.word.append(word)
+        self.pWord.append(pWord)

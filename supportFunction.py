@@ -37,10 +37,11 @@ def cleanFile(path):
     f = open(path, 'r+')
     f.truncate(0)
 
-def listsum(numList):
+def listsum(numList, right):
     theSum = 0
     for i in numList:
-        theSum += (i)
+        if i != right:
+            theSum += exp(i - right)
     return theSum
 
 
